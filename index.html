@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>  Robostats Wiki | blank</title>
+<title>  Robostats Wiki</title>
 <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 ">
 
@@ -29,7 +29,7 @@
 <link rel="shortcut icon" href="/robostats-wiki/assets/img/favicon.ico">
 <link rel="stylesheet" href="/robostats-wiki/assets/css/main.css">
 
-<link rel="canonical" href="/robostats-wiki/blog/">
+<link rel="canonical" href="/robostats-wiki/">
 
 <!-- Theming-->
 
@@ -54,10 +54,6 @@
     <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
     <div class="container">
       
-      <a class="navbar-brand title font-weight-lighter" href="/robostats-wiki/">
-       <span class="font-weight-bold"></span>   Robostats Wiki
-      </a>
-      
       <!-- Navbar Toogle -->
       <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="sr-only">Toggle navigation</span>
@@ -68,15 +64,17 @@
       <div class="collapse navbar-collapse text-right" id="navbarNav">
         <ul class="navbar-nav ml-auto flex-nowrap">
           <!-- About -->
-          <li class="nav-item ">
+          <li class="nav-item active">
             <a class="nav-link" href="/robostats-wiki/">
               about
+              
+                <span class="sr-only">(current)</span>
               
             </a>
           </li>
           
           <!-- Blog -->
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="/robostats-wiki/blog/">
               blog
               
@@ -108,54 +106,74 @@
     <div class="container mt-5">
       <div class="post">
 
-<!--  <div class="header-bar">-->
-<!--    <h1>al-folio</h1>-->
-<!--    <h2>a simple whitespace theme for academics</h2>-->
-<!--  </div>-->
+  <header class="post-header">
+    <h1 class="post-title">
+     <span class="font-weight-bold"></span>   Robostats Wiki
+    </h1>
+     <p class="desc"></p>
+  </header>
 
+  <article>
+    
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="/robostats-wiki/blog/2020/perceptron-svm/">Perceptron & SVM</a></h3>
-        <p class="post-meta">December 21, 2020</p>
-        <p>instructions to add a blog post on this website</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/robostats-wiki/blog/2020/EXP3-EXP4/">Adversarial Bandits, EXP3 and EXP4</a></h3>
-        <p class="post-meta">December 21, 2020</p>
-        <p>Multi Armed Bandits in an Adversarial Environment</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/robostats-wiki/blog/2020/online-learning-1/">Online Learning - 1</a></h3>
-        <p class="post-meta">December 20, 2020</p>
-        <p>Greedy, Halving, Randomized Greedy</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/robostats-wiki/blog/2020/intro_to_RL/">Intro to Reinforcement Learning</a></h3>
-        <p class="post-meta">December 20, 2020</p>
-        <p>Introduction to markov decision process, policies, and reinforcement learning.</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/robostats-wiki/blog/2020/instruction/">Getting Started</a></h3>
-        <p class="post-meta">December 2, 2020</p>
-        <p>instructions to add a blog post on this website</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/robostats-wiki/blog/2018/distill/">a distill-style blog post</a></h3>
-        <p class="post-meta">December 22, 2018</p>
-        <p>an example of a distill-style blog post and main elements</p>
-      </li>
-    
-  </ul>
+    <div class="clearfix">
+      <p>This is a wiki for <a href="https://sites.google.com/view/16-831-cmu/home">16-831: Statistical Techniques in Robotics</a>.
+You may select from one of the following topics covered in class to create a blog post. Check out <a href="blog/2020/instruction/">Getting Started</a> for instructions.</p>
 
-  
+<h3 id="online-learning">Online learning</h3>
+<ul>
+  <li><a href="blog/2020/online-learning-1/">Greedy, Halving, Randomized Greedy</a></li>
+  <li>Weighted Majority, Randomized Weighted Majority</li>
+  <li>Convex Optimization, Online Convex Optimization</li>
+  <li>Follow the Leader, Follow the Regularized Leader</li>
+  <li><a href="blog/2020/perceptron-svm/">Perceptron, SVM</a></li>
+  <li>Bagging, Boosting</li>
+</ul>
 
+<h3 id="multi-armed-bandits">Multi-armed bandits</h3>
+<ul>
+  <li>Intro to Multi-armed bandits</li>
+  <li>Explore-exploit</li>
+  <li>UCB, Thompson Sampling</li>
+  <li><a href="blog/2020/EXP3-EXP4">EXP3, EXP4</a></li>
+</ul>
+
+<h3 id="reinforcement-learning">Reinforcement learning</h3>
+<ul>
+  <li><a href="blog/2020/intro_to_RL/">Intro to reinforcement learning</a></li>
+  <li>Policy-gradients</li>
+  <li>Q-function based methods</li>
+  <li>Off-policy RL</li>
+  <li>Model-based RL</li>
+  <li>iLQR</li>
+  <li>Control under uncertainty: LQG, iLQG, PILCO</li>
+</ul>
+
+<h3 id="learning-from-demonstration">Learning from Demonstration</h3>
+<ul>
+  <li>IRL</li>
+  <li>Imitation learning</li>
+</ul>
+
+<h3 id="generative-models">Generative models</h3>
+<ul>
+  <li>Generative adversarial networks</li>
+  <li>Variational autoencoders</li>
+</ul>
+
+<h3 id="misc">Misc</h3>
+<ul>
+  <li>Robot ethics</li>
+</ul>
+
+    </div>
+
+    
+
+    
+
+    
+  </article>
 
 </div>
 

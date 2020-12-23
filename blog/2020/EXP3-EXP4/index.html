@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>  Robostats Wiki | Adversarial Bandits, EXP3 and EXP4</title>
+<meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+">
+
+<!-- Open Graph -->
+
+
+<!-- Bootstrap & MDB -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" integrity="sha512-RO38pBRxYH3SoOprtPTD86JFOclM51/XTIdEPh5j8sj4tp8jmQIx26twG52UaLi//hQldfrh7e51WzP9wuP32Q==" crossorigin="anonymous" />
+
+<!-- Fonts & Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"  integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+<!-- Code Syntax Highlighting -->
+<link rel="stylesheet" href="https://gitcdn.link/repo/jwarby/jekyll-pygments-themes/master/github.css" />
+
+<!-- Styles -->
+<link rel="shortcut icon" href="/robostats-wiki/assets/img/favicon.ico">
+<link rel="stylesheet" href="/robostats-wiki/assets/css/main.css">
+
+<link rel="canonical" href="/robostats-wiki/blog/2020/EXP3-EXP4/">
+
+<!-- Theming-->
+
+
+
+
+    
+<!-- MathJax -->
+<script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js"></script>
+<script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+
+    <script src="/robostats-wiki/assets/js/distillpub/template.v2.js"></script>
+    <script src="/robostats-wiki/assets/js/distillpub/transforms.v2.js"></script>
+    
+  </head>
+
+  <d-front-matter>
+    <script async type="text/json">{
+      "title": "Adversarial Bandits, EXP3 and EXP4",
+      "description": "Multi Armed Bandits in an Adversarial Environment",
+      "published": "2020-12-21 00:00:00 -0500",
+      "authors": [
+        
+        {
+          "author": "Ishraq Bhuiyan",
+          "authorURL": "",
+          "affiliations": [
+            {
+              "name": "Carnegie Mellon University",
+              "url": ""
+            }
+          ]
+        }
+        
+      ],
+      "katex": {
+        "delimiters": [
+          {
+            "left": "$",
+            "right": "$",
+            "display": false
+          },
+          {
+            "left": "$$",
+            "right": "$$",
+            "display": true
+          }
+        ]
+      }
+    }</script>
+  </d-front-matter>
+
+  <body class="fixed-top-nav sticky-bottom-footer">
+
+    <!-- Header -->
+
+    <header>
+
+    <!-- Nav Bar -->
+    <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+    <div class="container">
+      
+      <a class="navbar-brand title font-weight-lighter" href="/robostats-wiki/">
+       <span class="font-weight-bold"></span>   Robostats Wiki
+      </a>
+      
+      <!-- Navbar Toogle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/robostats-wiki/">
+              about
+              
+            </a>
+          </li>
+          
+          <!-- Blog -->
+          <li class="nav-item active">
+            <a class="nav-link" href="/robostats-wiki/blog/">
+              blog
+              
+            </a>
+          </li>
+          
+          <!-- Other pages -->
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+
+    <!-- Content -->
+
+    <div class="post distill">
+
+      <d-title>
+        <h1>Adversarial Bandits, EXP3 and EXP4</h1>
+        <p>Multi Armed Bandits in an Adversarial Environment</p>
+      </d-title>
+
+      <d-byline></d-byline>
+
+      <d-article>
+        <div class="row">
+  <div class="col-sm mt-3 mt-md-0">
+    <img class="img-fluid" src="/robostats-wiki/assets/img/2020-12-21-EXP3-EXP4/bandits.png" />
+  </div>
+</div>
+<!--Image found [here](https://towardsdatascience.com/comparing-multi-armed-bandit-algorithms-on-marketing-use-cases-8de62a851831) -->
+
+<p>We will now consider bandits in an adversarial environment. Instead of considering a distribution over the rewards, we assume an adversary that chooses a reward for each bandit after looking at your code to try to maximize your regret. In an adversarial environment there is no “true mean” to the environment, since the environment is adversarial.</p>
+
+<p>We will consider two different Bandit algorithms, <strong>EXP3</strong> and <strong>EXP4</strong>. EXP3 stands for Exponential Weight Update algorithm for Exploration and Exploitation, and can be applied to the context-free adversarial environment for bandits. EXP4 is similar to EXP3 and stands for Exponential Weight Update algorithm for Exploration and Exploitation with Experts, and is applied to the contextual adversarial environment, where the context is handled by experts.</p>
+
+<p>Since the environment actively tries to hinder you and knows your code, how can we beat an adversary like that? We can use randomness and define a randomized policy, since an adversary is unable to know our random seed and output of our random sampling, only the weights. This is the fundamental idea behind EXP3 and EXP4, and many other policies for adversarial environments in general. If we do not behave deterministically, an adversary is unable to guarantee maximal regret for us for each round.</p>
+
+<h2 id="regret-and-pseudo-regret-with-stochastic-policies">Regret (and pseudo regret) with stochastic policies</h2>
+
+<p>Since we have a stochastic policy, we want the lowest <strong>expected regret</strong> with respect to the choices of our policy.</p>
+
+<p>With a deterministic policy and a deterministic loss, our regret \(R\) as we’ve previously seen is</p>
+
+\[R = \max_{k \in [K]} \sum_{t=1}^{T} (l^{(t)}_{k^{(t)}} - l^{(t)}_k) \\
+= \sum_{t=1}^{T} (l^{(t)}_{k^{(t)}} - l^{(t)}_{k^*})\]
+
+<p>where \(k^*\) is the arm with the lowest loss, and \(l^{(t)}_{k^{(t)}}\) is the loss of the learner.</p>
+
+<p>Since for adversarial bandits, we have a stochastic policy, we have to compute the expectation over the policy distribution.</p>
+
+\[\mathbb{E}[R] = \mathbb{E}[\max_{k} \sum_{t=1}^{T} (l^{(t)}_{k^{(t)}} - l^{(t)}_k)]\]
+
+<p>In our case with adversarial bandits, instead of using regret, we will actually be using <strong>Pseudo Regret</strong>, moves the max outside the expectation. Using the Pseudo Regret leads to simpler analysis and computation of regret bounds in our case. The pseudo regret is</p>
+
+\[\bar{R} = \max_{k} \mathbb{E}[ \sum_{t=1}^{T} (l^{(t)}_{k^{(t)}} - l^{(t)}_k)]\]
+
+<p>It is important to note that <strong>the maximum of an expectation and the expectation of a maximum are different</strong>. In general, what we have is that since max is a convex function, we can apply <a href="https://en.wikipedia.org/wiki/Jensen%27s_inequality">Jensen’s Inequality</a> and we have that</p>
+
+\[\bar{R} \leq \mathbb{E}[R]\]
+
+<h2 id="exp3">EXP3</h2>
+
+<p>We will now explore the EXP3 algorithm, which is shown below in python-esque pseudocode with array indexing starting at one</p>
+
+<!--d-code block language="python">
+def EXP3($$\gamma \in [0,1]$$):                    # Line 1: 
+  w = ones(K)                         # Line 2: initialize weights over actions equally
+  for t=1,...,T:                      # Line 3: Iterate over each time step
+    p = w/sum(w)                      # Line 4: Probability over actions based on weights
+    k = multinomial(p)                # Line 5: Sample action k
+    a = actions[k]                    # Line 6: Choose action k
+    r = receive_reward(a)             # Line 7: Receive reward for taking action k
+    l = 1-r                           # Line 8: Compute Loss
+    w[k] = w[k]*exp(-$$\gamma$$ * l/p[k])    # Line 9: Updates weights for sampled action
+</d-code-->
+
+<div class="row">
+  <div class="col-sm mt-3 mt-md-0">
+    <img class="img-fluid" src="/robostats-wiki/assets/img/2020-12-21-EXP3-EXP4/EXP3.png" />
+  </div>
+</div>
+
+<p>We first choose \(\gamma \in [0,1]\) on Line 1. On Line 2, we initialize the weights for all the actions equally. Then we go through all our rounds, and at the start of each round, we set the probability of each action as the weight of the action divides by the total sum of the weights, as seen in Line 4. We then sample an action in Line 5, and receive the appropriate reward for that single action in Line 7. We then update the weight of only that action on line 8.</p>
+
+<p>Inspecting the algorithm, it can be seen that this algorithm is very similar to something we’ve seen before, the <strong>Hedge Algorithm</strong> variant of the Randomized Weighted Majority Algorithm. For reference, the pseudocode for the algorithm is shown here</p>
+
+<div class="row">
+  <div class="col-sm mt-3 mt-md-0">
+    <img class="img-fluid" src="/robostats-wiki/assets/img/2020-12-21-EXP3-EXP4/Hedge_algorithm.png" />
+  </div>
+</div>
+
+<p>The primary difference between EXP3 and the Hedge Algorithm is on line 8 of both, where for EXP3 the loss is known for only one action, and therefore only one weight is updated, whereas in the Hedge Algorithm,, the loss is known for all the experts/hypotheses, and therefore all the weights can be updated at each time step. Additionally, when setting the weights, we consider the scaled loss for EXP3 instead of just the loss.
+<!--d-code block language="python">
+def Hedge($$\beta$$):
+  w = ones(N)
+  for t=1,...,T:
+    x = receive($$ x \in {-1,1}$$)
+    i = multinomial(w/sum(w))
+    hi = h[i]
+    y = $$h_i(x)$$
+</d-code--></p>
+
+<h3 id="exp3-regret-bounds">EXP3 Regret Bounds</h3>
+
+<p>In order to derive the regret bounds for our algorithm, we first need to define a potential function, which we will define using our weights</p>
+
+\[z^{(t)} = \sum_{i} w_i^{(t)}\]
+
+\[\phi = log(\frac{z^{(T+1)}}{z^{(1)}})\]
+
+<p>\(\phi\) is our potential function. We can further simplify with</p>
+
+\[\frac{z^{(T+1)}}{z^{(1)}} = \frac{z^{(2)}z^{(3)}...z^{(T+1)}}{z^{(1)}z^{(2)}...z^{(T)}} = \prod_{t=1}^{T} \frac{z^{(t+1)}}{z^{(t)}}\]
+
+\[\phi = log(\frac{z^{(T+1)}}{z^{(1)}}) = log(\prod_{t=1}^{T} \frac{z^{(t+1)}}{z^{(t)}}) = \sum_{t=1}^{T}log( \frac{z^{(t+1)}}{z^{(t)}})\]
+
+<h3 id="upper-bound">Upper Bound</h3>
+
+<p>Now we can start to derive our upper bounds. We start with the potential function.</p>
+
+\[\phi = \sum_{t=1}^{T}log( \frac{z^{(t+1)}}{z^{(t)}})\]
+
+\[= \sum_{t=1}^{T}log( \frac{\sum_i w_{i}^{(t+1)}}{ \sum_{i'} w_{i'}^{(t)}})\]
+
+<p>Using our weight update equation, and by defining \(\tilde{l_i^{(t)}} = \frac{\mathbb{1}\{k^{(t)} = i \}}{p_i^{(t)}} l_i^{(t)}\)</p>
+
+\[\phi = \sum_{t=1}^{T}log( \frac{\sum_i w_{i}^{(t)} exp \{-\gamma * \tilde{l_i^{(t)}} \}}{ \sum_{i'} w_{i'}^{(t)}}) 
+ = \sum_{t=1}^{T}log( \sum_i \frac{ w_{i}^{(t)} }{ \sum_{i'} w_{i'}^{(t)}}exp \{-\gamma * \tilde{l_i^{(t)}} \})\]
+
+<p>We see that the fraction inside the second summation is actually the probability of selection arm k.</p>
+
+\[\phi = \sum_{t=1}^{T}log( \sum_i p_i^{(t)} exp \{-\gamma * \tilde{l_i^{(t)}} \})\]
+
+<p>We will utilize the inequality that \(\forall x \leq 0\), then \(e^x \leq 1+x+x^2/2\). Therefore, since \(- \gamma * \tilde{l_i^{(t)}} \leq 0\), due to the reward being bounded from 0 to 1, we have</p>
+
+\[\phi = \sum_{t=1}^{T}log( \sum_i p_i^{(t)} exp \{-\gamma * \tilde{l_i^{(t)}} \})
+  \leq \sum_{t=1}^{T}log( \sum_i p_i^{(t)} (1-\gamma *\tilde{l_i^{(t)}} + \gamma^2  \tilde{l}_i^{(t)2}/2 )\]
+
+\[\leq \sum_{t=1}^{T}log(\sum_i p_i^{(t)}-\gamma \sum_i p_i^{(t)} *\tilde{l_i^{(t)}} + \gamma^2/2 \sum_i p_i^{(t)} \tilde{l}_i^{(t)2} )\]
+
+<p>We can see that \(\sum_i p_i^{(t)}=1\) and we will use the fact that \(1+x \leq e^x\)</p>
+
+\[\leq \sum_{t=1}^{T}log(1-\gamma \sum_i p_i^{(t)} *\tilde{l_i^{(t)}} + \gamma^2/2 \sum_i p_i^{(t)} \tilde{l}_i^{(t)2} )
+\leq \sum_{t=1}^{T}log(exp(-\gamma \sum_i p_i^{(t)} *\tilde{l_i^{(t)}} + \gamma^2/2 \sum_i p_i^{(t)} \tilde{l}_i^{(t)2} ))\]
+
+\[\leq \sum_{t=1}^{T} ( -\gamma \sum_i p_i^{(t)} *\tilde{l_i^{(t)}} + \gamma^2/2 \sum_i p_i^{(t)} \tilde{l}_i^{(t)2} )\]
+
+<p>And now we have our upper bound on the potential function</p>
+
+\[\phi \leq \sum_{t=1}^{T} ( -\gamma \sum_i p_i^{(t)} *\tilde{l_i^{(t)}} + \gamma^2/2 \sum_i p_i^{(t)} \tilde{l}_i^{(t)2} )\]
+
+<h3 id="lower-bound">Lower Bound</h3>
+
+<p>We will now derive the lower bound on the potential function. We know that the weights are initialized to 1, so \(z^{(1)} = K\)</p>
+
+\[\phi = log(\frac{z^{(T+1)}}{z^{(1)}}) = log(\frac{z^{(T+1)}}{K}) = -log K + log \sum_i w_{i}^{(T+1)}\]
+
+\[= -log K + log \sum_i w_{i}^{(T)} exp ( -\gamma * \tilde{l}_i^{(T)})\]
+
+<p>Since the weights are initialized to 1, we can repeatedly apply the update rule for every timestep as a product</p>
+
+\[\phi = -log K + log \sum_i \prod_{t=1}^{T} exp ( -\gamma * \tilde{l}_i^{(t)})\]
+
+<p>Now we can simplify the exponential and pass the product inside as a sum, since the product of exponentials is the exponential of the sum</p>
+
+\[\phi = -log K + log \sum_i  exp ( -\gamma * \sum_{t=1}^{T}\tilde{l}_i^{(t)})\]
+
+<p>We can now lower bound the summation by any individual element j in the sum</p>
+
+\[\phi \geq -log K + log exp ( -\gamma * \sum_{t=1}^{T}\tilde{l}_j^{(t)})\]
+
+\[\phi \geq -log K +  -\gamma * \sum_{t=1}^{T}\tilde{l}_j^{(t)}\]
+
+<p>And now we have our lower bound for any bandit arm j</p>
+
+\[\phi \geq -log K +  -\gamma * \sum_{t=1}^{T}\tilde{l}_j^{(t)}\]
+
+<h3 id="combined-bounds">Combined Bounds</h3>
+
+<p>We will now try to combine the bounds of the potential function and relate it to the (pseudo) regret</p>
+
+\[-log K +  -\gamma * \sum_{t=1}^{T}\tilde{l}_j^{(t)} \leq \sum_{t=1}^{T} ( -\gamma \sum_i p_i^{(t)} *\tilde{l_i^{(t)}} + \gamma^2/2 \sum_i p_i^{(t)} \tilde{l}_i^{(t)2} )\]
+
+<p>Rearranging the terms we get</p>
+
+\[\gamma \sum_{t=1}^{T} \sum_i p_i^{(t)} *\tilde{l_i^{(t)}} -\gamma * \sum_{t=1}^{T}\tilde{l}_j^{(t)} \leq log(K) + \gamma^2/2\sum_{t=1}^{T} \sum_i p_i^{(t)} \tilde{l}_i^{(t)2}\]
+
+\[\sum_{t=1}^{T} \sum_i p_i^{(t)} \tilde{l_i^{(t)}} - \sum_{t=1}^{T}\tilde{l}_j^{(t)} \leq (1/\gamma) log(K) + \gamma/2\sum_{t=1}^{T} \sum_i p_i^{(t)} \tilde{l}_i^{(t)2}\]
+
+<p>We now use the fact that \(\tilde{l_i^{(t)}} = \frac{\mathbb{1}\{k^{(t)} = i \}}{p_i^{(t)}} l_i^{(t)}\)</p>
+
+\[\sum_{t=1}^{T} \sum_i p_i^{(t)} \frac{\mathbb{1}\{k^{(t)} = i \}}{p_i^{(t)}} l_i^{(t)} - \sum_{t=1}^{T}\tilde{l}_j^{(t)} \leq (1/\gamma) log(K) + \gamma/2\sum_{t=1}^{T} \sum_i p_i^{(t)} \tilde{l}_i^{(t)2}\]
+
+\[\sum_{t=1}^{T} \sum_i \mathbb{1}\{k^{(t)} = i \} l_i^{(t)} - \sum_{t=1}^{T}\tilde{l}_j^{(t)} \leq (1/\gamma) log(K) + \gamma/2\sum_{t=1}^{T} \sum_i p_i^{(t)} \tilde{l}_i^{(t)2}\]
+
+\[\sum_{t=1}^{T} l_k^{(t)} - \sum_{t=1}^{T}\tilde{l}_j^{(t)} \leq (1/\gamma) log(K) + \gamma/2\sum_{t=1}^{T} \sum_i p_i^{(t)} \tilde{l}_i^{(t)2}\]
+
+<p>Now we can see that the loss of the learner is in this inequality as \(\sum_{t=1}^{T} l_k^{(t)}\). This is also why we chose the scaled loss in our update equation on line 8 of the EXP3 algorithm. We can now take the expectation of both sides of the inequality.</p>
+
+\[\mathbb{E} (\sum_{t=1}^{T} l_k^{(t)} - \sum_{t=1}^{T}\tilde{l}_j^{(t)}) \leq \mathbb{E} ((1/\gamma) log(K) + \gamma/2\sum_{t=1}^{T} \sum_i p_i^{(t)} \tilde{l}_i^{(t)2})\]
+
+\[\mathbb{E} [\sum_{t=1}^{T} l_k^{(t)}] - \mathbb{E} [\sum_{t=1}^{T}\tilde{l}_j^{(t)}] \leq \frac{log(K)}{\gamma} + \mathbb{E} [\gamma/2\sum_{t=1}^{T} \sum_i p_i^{(t)} \tilde{l}_i^{(t)2}]\]
+
+<p>We can simplify \(\mathbb{E} [\sum_{t=1}^{T}\tilde{l}_j^{(t)}]\) by</p>
+
+\[\mathbb{E} [\sum_{t=1}^{T}\tilde{l}_j^{(t)}] = \mathbb{E} [\sum_{t=1}^{T} \frac{\mathbb{1}[k^{(t)}=j]}{p_j^{(t)}}l_j^{(t)}]\]
+
+\[= \sum_{k^{(t)}} \sum_{t=1}^{T} p_{k^{(t)}} \frac{\mathbb{1}[k^{(t)}=j]}{p_j^{(t)}}l_j^{(t)}\]
+
+\[= \sum_{t=1}^{T} l_j^{(t)}\]
+
+<p>We can now plug this back in</p>
+
+\[\mathbb{E} [\sum_{t=1}^{T} l_k^{(t)}] - \sum_{t=1}^{T} l_j^{(t)} \leq \frac{log(K)}{\gamma} + \mathbb{E} [\gamma/2\sum_{t=1}^{T} \sum_i p_i^{(t)} \tilde{l}_i^{(t)2}]\]
+
+<p>Using the same reasoning as for the scaled loss in the expectation on the left hand side on the inequality, we can similarly reduce the expectation on the right side and the inequality becomes</p>
+
+\[\mathbb{E} [\sum_{t=1}^{T} l_k^{(t)}] - \sum_{t=1}^{T} l_j^{(t)} \leq \frac{log(K)}{\gamma} + \frac{\gamma}{2}\sum_{t=1}^{T} \sum_i l_i^{(t)2}\]
+
+<p>Since the loss is from 0 to 1, we can further upper bound the right side of the equation, since there are K arms and T timesteps</p>
+
+\[\mathbb{E} [\sum_{t=1}^{T} l_k^{(t)}] - \sum_{t=1}^{T} l_j^{(t)} \leq \frac{log(K)}{\gamma} + \frac{\gamma KT}{2}\]
+
+<p>We recall the definition of pseudo regret as 
+\(\bar{R} = \max_{k} \mathbb{E}[ \sum_{t=1}^{T} (l^{(t)}_{k^{(t)}} - l^{(t)}_k)]\)</p>
+
+<p>Since our inequality holds for any arm, it also holds for the arm that maximizes the quantity on the left hand side</p>
+
+\[\max_j \mathbb{E} [\sum_{t=1}^{T} l_k^{(t)}] - \sum_{t=1}^{T} l_j^{(t)} \leq \frac{log(K)}{\gamma} + \frac{\gamma KT}{2}\]
+
+<p>We can now see the pseudo regret on the left hand side, and we have an upper bound on our pseudo regret.</p>
+
+\[\bar{R} \leq \frac{log(K)}{\gamma} + \frac{\gamma KT}{2}\]
+
+<h3 id="optimal-gamma-and-pseudo-regret-bound">Optimal Gamma and Pseudo Regret Bound</h3>
+
+<p>We have an upper bound on our pseudo regret, but we want to be able to minimize this bound. We can do this by tuning the \(\gamma\) parameter.</p>
+
+<p>We start by taking the derivative with respect to \(\gamma\) of the right hand side of the inequality to find its minimum.</p>
+
+\[\frac{d}{d\gamma} \{ \frac{log(K)}{\gamma} + \frac{\gamma KT}{2} \} = 0\]
+
+\[-\frac{log K}{\gamma^2} + \frac{TK}{2} = 0\]
+
+\[\gamma = \sqrt{\frac{2logK}{TK}}\]
+
+<p>So if we let \(\gamma = \sqrt{\frac{2logK}{TK}}\), we have that</p>
+
+\[\bar{R} \leq \frac{log(K)}{\sqrt{\frac{2logK}{TK}}} + \frac{\sqrt{\frac{2logK}{TK}} KT}{2}\]
+
+\[\bar{R} \leq \sqrt{\frac{TKlogK}{2}} + \sqrt{\frac{TKlogK}{2}}\]
+
+\[\bar{R} \leq \sqrt{2TKlogK}\]
+
+<p>This is our pseudo-regret bound for EXP3.</p>
+
+<h3 id="exp3-compared-to-ucb">EXP3 compared to UCB</h3>
+
+<p>Comparing EXP3 to UCB, we see that they have very similar pseudo regret bounds.</p>
+
+<p>For EXP3, the regret bound is</p>
+
+\[\bar{R} \leq \sqrt{2TKlogK}\]
+
+<p>For UCB, the regret bound is</p>
+
+\[\bar{R} \leq \sqrt{\alpha NTlogT}\]
+
+<p>We can see that EXP3 is faster in terms of the time horizon T, and UCB is faster in terms of the number of actions N, but these algorithms are fundamentally different since they make different assumptions. UCB deals with stochastic rewards, and EXP3 deals with adversarial rewards.</p>
+
+<h2 id="exp4">EXP4</h2>
+
+<p>EXP4 stands for <strong>Exponential Weight Update Algorithm for Exploration and Exploitation with Experts</strong>. EXP4 is very similar to EXP3, except that instead of being in a context free environment, EXP4 is contextual.</p>
+
+<p>EXP4 handles context by defining experts. Each experts proposes different ways to handle the context and proposes a distribution over the actions. EXP4 learns which expert to follow in an adversarial environment.</p>
+
+<p>The algorithm for EXP4 is shown below</p>
+
+<div class="row">
+  <div class="col-sm mt-3 mt-md-0">
+    <img class="img-fluid" src="/robostats-wiki/assets/img/2020-12-21-EXP3-EXP4/EXP4.png" />
+  </div>
+</div>
+
+<p>EXP4, unlike EXP3, initializes the weights over all the N experts in Line 2. Then at each timestep, it receives advice from the N experts, on line 4, where each expert provides a distribution over the K arms. EXP4 then calculates a weighted sum over the expert advice to get the probabilities over all the actions on line 5, and then samples an action from that distribution on line 6. Then on line 10, the weight for each expert is updated based on the probability that expert provided on selecting that action and the reward of that action.</p>
+
+<p>Following a very similar derivation as EXP3, we get the pseudo regret of EXP4, where N is the number of experts</p>
+
+\[\bar{R} \leq \sqrt{ 2KT \log{N}}\]
+
+      </d-article>
+
+      <d-appendix>
+        <d-footnote-list></d-footnote-list>
+        <d-citation-list></d-citation-list>
+      </d-appendix>
+
+    </div>
+
+    <!-- Footer -->
+
+    
+<footer class="sticky-bottom mt-5">
+  <div class="container">
+    &copy; Copyright 2020   Robostats Wiki.
+    
+    
+    Last updated: December 22, 2020.
+    
+  </div>
+</footer>
+
+
+
+  </body>
+
+  <d-bibliography src="/robostats-wiki/assets/bibliography/2020-12-21-exp3-exp4.bib">
+  </d-bibliography>
+
+</html>
