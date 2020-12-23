@@ -1,6 +1,6 @@
 ---
 layout: distill
-title: Online Learning
+title: Online Learning - 1
 description: Greedy, Halving, Randomized Greedy
 date: 2020-12-20
 
@@ -57,10 +57,10 @@ Next let's see some algorithms for online learning with expert advice. For simpl
 
 And we make these assumptions about the experts:
 
-- The hypothesis class is finite: $$|H|=N<\infty$$.
+- The hypothesis class is finite: $$ \mid H \mid =N<\infty$$.
 - Realizability: There exists a hypothesis $$h^*\in H$$ which is always gives the true answer $$y^{(t)}=h^*(x^{(t)})$$.
 
-## Greedy
+## Greedy Algorithm
 
 The idea of our first **greedy** algorithm is fairly simple: Only keep the experts whose predictions are correct, and throw away the bad ones. We can keep a record of the set of the experts whose answers consistent with the true answer up to now, and follow the advice of one expert in this set. We call this set the *version space*, which is initialized as all experts and shrinks over time. The pseudo-code looks like:
 
@@ -115,7 +115,7 @@ In this derivation, we show a common technique for finding the error bound in on
 - Then we find the lower and upper bounds of the potential function. They should involve the errors that we make in the process.
 - By combining the two bounds together, we can arrive at an inequality which leads to the error bound.
 
-## Halving
+## Halving Algorithm
 
 As you may have noticed in the greedy algorithm, we are simply following the advice of *the first expert* in the current version space. In the worst case, we may have to exclude the bad experts one by one. Yes, there should be a better strategy to make the decision.
 
@@ -150,7 +150,7 @@ $$
 
 Compared with the greedy algorithm, the halving algorithm can improve the error bound logarithmically.
 
-## Randomized Greedy
+## Randomized Greedy Algorithm
 
 An interesting variant of the greedy algorithm is the **randomized greedy** algorithm. Instead of following the first expert in the current version space, the randomized greedy algorithm uniformly samples one expert and follows its advice. Surprisingly, the randomized greedy algorithm can sometimes perform better than the halving algorithm. The pseudo-code looks like:
 

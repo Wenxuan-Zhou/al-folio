@@ -13,21 +13,21 @@ This is a wiki for [16-831: Statistical Techniques in Robotics](https://sites.go
 You may select from one of the following topics covered in class to create a blog post. Check out [Getting Started](blog/2020/instruction/) for instructions.
 
 ### Online learning	
-- Greedy, Halving, Randomized Greedy
+- [Greedy, Halving, Randomized Greedy](blog/2020/online-learning-1/)
 - Weighted Majority, Randomized Weighted Majority
 - Convex Optimization, Online Convex Optimization
 - Follow the Leader, Follow the Regularized Leader
-- Perceptron, SVM
+- [Perceptron, SVM](blog/2020/perceptron-svm/)
 - Bagging, Boosting
 
 ### Multi-armed bandits	
 - Intro to Multi-armed bandits
 - Explore-exploit
 - UCB, Thompson Sampling
-- EXP3, EXP4
+- [EXP3, EXP4](blog/2020/EXP3-EXP4)
 
 ### Reinforcement learning	
-- Intro to reinforcement learning
+- [Intro to reinforcement learning](blog/2020/intro_to_RL/)
 - Policy-gradients
 - Q-function based methods
 - Off-policy RL
